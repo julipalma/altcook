@@ -1,0 +1,6 @@
+- mejorar el buscador: 
+    - que tome la data a medida que se escribe
+    - que busque al apretar enter
+- armar un modelo para definir alternativas: ejemplo harinas, carnes, frutas, veganos
+- calcular alternativas en función de cuántos ingredientes son similares: ej un 80% -> en los diferentes validar que sean alternativas
+- 
