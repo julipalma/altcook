@@ -26,8 +26,13 @@ export const FormSection = ({
   recipes,
   handleChangeRecipesResults, 
   handleChangeTypeOfDietResults,
+  handleSelectedRecipe,
+  handleSelectedType,
+  handleSelectedIngredients,
   recipesResults, 
-  typeOfDietResults
+  typeOfDietResults, 
+
+  handleSubmit
 }) => {
   return (
     <Form>
@@ -44,6 +49,7 @@ export const FormSection = ({
                       placeholder='Buscar por receta'
                       onSearchChange={handleChangeRecipesResults}
                       results={recipesResults}
+                      onResultSelect={handleSelectedRecipe}
                     />
                   </Segment>
                   <Segment>
@@ -53,6 +59,7 @@ export const FormSection = ({
                       placeholder='Buscar por tipo de dieta'
                       onSearchChange={handleChangeTypeOfDietResults}
                       results={typeOfDietResults}
+                      onResultSelect={handleSelectedType}
                     />
                   </Segment>
                   <Segment>
@@ -65,11 +72,13 @@ export const FormSection = ({
                       multiple selection
                       style={{ marginBottom: "1rem" }}
                       placeholder='Buscar ingredientes'
+                      onChange={handleSelectedIngredients}
+                      
                     />
                   </Segment>
                 </Segment.Group>
                 <Segment.Group horizontal>
-                  <Segment><Button onClick={handleClickSearch} circular icon="search" /></Segment>
+                  <Segment><Button onClick={handleSubmit} circular icon="search" /></Segment>
                 </Segment.Group>
                 {/* <Segment.Group>
                   <Segment>

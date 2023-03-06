@@ -4,7 +4,7 @@ import { FormSection } from "./components/FormSection";
 import { ModalSearchRecipe } from "./components/ModalSearchRecipe";
 import { Results } from "./components/views/Results";
 import { useGetAllRecipes } from "./hooks/useGetAllRecipes";
-import { useSearchRecipes } from "./hooks/useSearchRecipes";
+import { useSearch } from "./hooks/useSearch";
 import { useSetRecipesResults } from "./hooks/useSetRecipesResults"
 import { useSetTypeOfDietResults } from "./hooks/useSetTypeOfDietResults"
 import { useChangeView } from "./hooks/useChangeView";
@@ -12,6 +12,8 @@ import { useRecipesByTypeOfDiet } from "./hooks/useRecipesByTypeOfDiet";
 import { orderRecipes } from "./utils/orderUtils";
 import { transformSearch, transformTitles, transformTypesOfDiet } from "./utils/transformData";
 import { getTypesOfDiet } from "./helpers/getAllTypes";
+import { useForm } from "react-hook-form";
+
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -31,10 +33,16 @@ function App() {
     const {
       handleChangeSearchRecipe,
       handleClickSearch,
-      search,
       searchRecipe,
       recipeToView,
-    } = useSearchRecipes();
+      handleSubmit, 
+      handleSelectedRecipe,
+      handleSelectedType, 
+      handleSelectedIngredients
+      
+    } = useSearch();
+
+    
     
     const { 
       handleChangeView, 
@@ -73,23 +81,30 @@ function App() {
         {error && <Error />}
         { recipes?.length>0 && 
           <FormSection
-            handleChangeSearchRecipe={handleChangeSearchRecipe}
+            /* handleChangeSearchRecipe={handleChangeSearchRecipe}
             handleClickSearch={handleClickSearch}
-            searchRecipe={searchRecipe}
+            searchRecipe={searchRecipe} */
 
-            ingredients={transformSearch(ingredients)}
+            handleSubmit={handleSubmit}
+
+            /* ingredients={transformSearch(ingredients)}
             handleChangeRecipesResults={handleChangeRecipesResults}
-            handleChangeTypeOfDietResults={handleChangeTypeOfDietResults}
+            handleChangeTypeOfDietResults={handleChangeTypeOfDietResults} */
+
+            /* handleSelectedRecipe={handleSelectedRecipe}
+            handleSelectedType={handleSelectedType}
+            handleSelectedIngredients={handleSelectedIngredients} */
+            
             recipesResults={recipesResults.length > 0 ? recipesResults : titleRecipes}
             typeOfDietResults={typeOfDietResults.length > 0 ? typeOfDietResults : typesOfDiet}
 
-            handleChangeSearchRecipesByType={handleChangeSearchRecipesByType}
+            /* handleChangeSearchRecipesByType={handleChangeSearchRecipesByType}
             handleClickSearchRecipesByType={handleClickSearchRecipesByType}
-            typeOfDiet={typeOfDiet}
+            typeOfDiet={typeOfDiet} */
 
-            handleClickChangeOrder={handleChangeOrder}
+            /* handleClickChangeOrder={handleChangeOrder}
             order={order}
-            handleChangeTypeOrder={handleChangeTypeOrder}
+            handleChangeTypeOrder={handleChangeTypeOrder} */
           />
         }
         {/* {search && (

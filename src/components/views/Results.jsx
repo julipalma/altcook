@@ -12,6 +12,10 @@ export const Results = ({
   typeOfDiet, 
   recipeToView
 }) => {
+  if (recipeToView?.length > 0) {
+    recipes = recipeToView;
+    todayRecipe = false;
+  }
   return (
     <>
     {
@@ -35,12 +39,15 @@ export const Results = ({
           <Grid.Row>
             <Grid.Column>{children}</Grid.Column>
           </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Container text textAlign='left'> Receta destacada</Container>
-              <CardList recipe={todayRecipe} />
-            </Grid.Column>
-          </Grid.Row>
+          {todayRecipe && (
+            <Grid.Row>
+              <Grid.Column>
+                <Container text textAlign='left'> Receta destacada</Container>
+                <CardList recipe={todayRecipe} />
+              </Grid.Column>
+            </Grid.Row>
+          )}
+          
           <Grid.Row>
             <Grid.Column>
               {viewType === VIEW_TYPE_GRID && (
